@@ -14,5 +14,7 @@
       templateUrl: 'js/app/features/menu/menu.html',
     })
 
+    $urlRouterProvider.otherwise('/app/home');
+
   }
 })();
