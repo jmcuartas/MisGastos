@@ -5,15 +5,15 @@
     .module('app.home')
     .controller('HomeController', HomeController);
 
-    function HomeController($scope) {
-      var vm = this;
+  function HomeController($scope) {
+    var vm = this;
 
-      $scope.$on('$ionicView.beforeEnter', function () {
-        initView();
-      });
+    $scope.$on('$ionicView.beforeEnter', function () {
+      initView();
+    });
 
-      function initView() {
-        vm.saluda = 'Hola Mundo!!!';
-      }
+    function initView() {
+      vm.saluda = 'Hola Mundo!!!';
     }
+  }
 })();
