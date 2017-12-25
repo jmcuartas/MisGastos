@@ -5,7 +5,7 @@
     .module('app.home')
     .controller('HomeController', HomeController);
 
-  function HomeController($scope) {
+  function HomeController($scope, HomeService) {
     var vm = this;
 
     $scope.$on('$ionicView.beforeEnter', function () {
