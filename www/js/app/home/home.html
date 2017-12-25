@@ -1,6 +1,16 @@
 <ion-view view-title="Home">
   <ion-content>
     {{vm.saluda}}
+    <ion-list>
+      <ion-item ng-repeat="expenses in vm.list">
+        <p>Año: {{expenses}}</p>
+        <p>Mes: {{expenses}}</p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+      </ion-item>
+    </ion-list>
   </ion-content>
 
   <ion-footer-bar>

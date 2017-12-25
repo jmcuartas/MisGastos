@@ -13,7 +13,10 @@
     });
 
     function initView() {
-      vm.saluda = 'Hola Mundo!!!';
+      vm.saluda = 'Hola mundo!!!';
+      HomeService.get().then(function (val) {
+        vm.list = val;
+      });
     }
   }
 })();

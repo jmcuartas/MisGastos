@@ -21,7 +21,9 @@
   }
 
   function get() {
-    firebase.database().ref().once('value').then(onSucces, onError);
+    return new Promise(resolve => {
+      firebase.database().ref().once('value').then((snapshot) => resolve(snapshot.val()));
+    });
   }
 
   function initFirebase() {
@@ -44,7 +46,7 @@
 
     firebase.auth().onAuthStateChanged(function (user) {
       if (user) {
-        get();
+        console.log('Ya puede hacer getData');
       } else {
         signInWithEmailAndPassword();
       }
