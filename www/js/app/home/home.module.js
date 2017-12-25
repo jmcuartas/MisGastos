@@ -15,9 +15,9 @@
         content: {
           templateUrl: 'js/app/home/home.html',
           controller: 'HomeController',
-          controllerAs: 'vm'
+          controllerAs: 'vm',
         },
       },
-    })
+    });
   }
 })();
