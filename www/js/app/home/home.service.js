@@ -45,9 +45,7 @@
     };
 
     firebase.auth().onAuthStateChanged(function (user) {
-      if (user) {
-        console.log('Ya puede hacer getData');
-      } else {
+      if (!user) {
         signInWithEmailAndPassword();
       }
     });

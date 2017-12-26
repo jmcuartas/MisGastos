@@ -1,14 +1,13 @@
-<ion-view view-title="Home">
+<ion-view cache-view="false" view-title="Home">
   <ion-content>
     {{vm.saluda}}
-    <ion-list>
-      <ion-item ng-repeat="expenses in vm.list">
-        <p>Año: {{expenses}}</p>
-        <p>Mes: {{expenses}}</p>
-        <p></p>
-        <p></p>
-        <p></p>
-        <p></p>
+    <ion-list ng-if="vm.list">
+      <ion-item ng-repeat="expenses in vm.list track by $index">
+        <h2>{{expenses.Mes}}</h2>
+        <p>Agua: {{expenses.Agua}}</p>
+        <p>Gas: {{expenses.Gas}}</p>
+        <p>Luz: {{expenses.Luz}}</p>
+        <p>Internet: {{expenses.Internet}}</p>
       </ion-item>
     </ion-list>
   </ion-content>

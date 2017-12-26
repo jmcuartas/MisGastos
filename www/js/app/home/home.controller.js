@@ -5,7 +5,7 @@
     .module('app.home')
     .controller('HomeController', HomeController);
 
-  function HomeController($scope, HomeService) {
+  function HomeController($scope, HomeService, $q) {
     var vm = this;
 
     $scope.$on('$ionicView.beforeEnter', function () {
@@ -13,9 +13,10 @@
     });
 
     function initView() {
-      vm.saluda = 'Hola mundo!!!';
       HomeService.get().then(function (val) {
-        vm.list = val;
+        $scope.$apply(function () {
+          vm.list = val[2017];
+        });
       });
     }
   }
