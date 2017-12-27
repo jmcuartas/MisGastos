@@ -21,7 +21,9 @@
   }
 
   function get() {
-    firebase.database().ref().once('value').then(onSucces, onError);
+    return new Promise(resolve => {
+      firebase.database().ref().once('value').then((snapshot) => resolve(snapshot.val()));
+    });
   }
 
   function initFirebase() {
@@ -43,10 +45,8 @@
     };
 
     firebase.auth().onAuthStateChanged(function (user) {
-      if (user) {
-        get();
-      } else {
-        signInWithEmailAndPassword();
+      if (!user) {
+        signInWithEmailAndPassword(cred);
       }
     });
   }
@@ -55,7 +55,7 @@
     firebase.auth().signOut().then(onSucces, onError);
   }
 
-  function signInWithEmailAndPassword() {
+  function signInWithEmailAndPassword(cred) {
     firebase.auth().signInWithEmailAndPassword(cred.email, cred.pass)
       .then(onSucces, onError);
   }
