@@ -46,7 +46,7 @@
 
     firebase.auth().onAuthStateChanged(function (user) {
       if (!user) {
-        signInWithEmailAndPassword();
+        signInWithEmailAndPassword(cred);
       }
     });
   }
@@ -55,7 +55,7 @@
     firebase.auth().signOut().then(onSucces, onError);
   }
 
-  function signInWithEmailAndPassword() {
+  function signInWithEmailAndPassword(cred) {
     firebase.auth().signInWithEmailAndPassword(cred.email, cred.pass)
       .then(onSucces, onError);
   }

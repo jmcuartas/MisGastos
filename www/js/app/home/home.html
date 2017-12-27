@@ -4,6 +4,8 @@
     <ion-list ng-if="vm.list">
       <ion-item ng-repeat="expenses in vm.list track by $index">
         <h2>{{expenses.Mes}}</h2>
+        <p>Año: {{expenses.Anyo}}</p>
+        <p>Fecha: {{expenses.Fecha}}</p>
         <p>Agua: {{expenses.Agua}}</p>
         <p>Gas: {{expenses.Gas}}</p>
         <p>Luz: {{expenses.Luz}}</p>

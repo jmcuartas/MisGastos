@@ -15,7 +15,7 @@
     function initView() {
       HomeService.get().then(function (val) {
         $scope.$apply(function () {
-          vm.list = val[2017];
+          vm.list = val.data;
         });
       });
     }
