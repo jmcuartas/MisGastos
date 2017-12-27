@@ -14,9 +14,14 @@
 
     function initView() {
       HomeService.get().then(function (val) {
-        $scope.$apply(function () {
-          vm.list = val.data;
-        });
+        vm.list = orderByDate(val);
+        $scope.$apply();
+      });
+    }
+
+    function orderByDate(val) {
+      return Object.keys(val).map(function (value) {
+        return { Fecha: new Date(value), values: val[value] };
       });
     }
   }

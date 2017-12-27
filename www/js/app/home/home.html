@@ -2,14 +2,22 @@
   <ion-content>
     {{vm.saluda}}
     <ion-list ng-if="vm.list">
-      <ion-item ng-repeat="expenses in vm.list track by $index">
-        <h2>{{expenses.Mes}}</h2>
-        <p>Año: {{expenses.Anyo}}</p>
-        <p>Fecha: {{expenses.Fecha}}</p>
-        <p>Agua: {{expenses.Agua}}</p>
-        <p>Gas: {{expenses.Gas}}</p>
-        <p>Luz: {{expenses.Luz}}</p>
-        <p>Internet: {{expenses.Internet}}</p>
+      <ion-item ng-repeat="expenses in vm.list | orderBy: 'Fecha'">
+        <div class="row">
+          <div class="col col-center">{{expenses.values.Mes}}</div>
+        </div>
+        <div class="row">
+          <div class="col col-20">Agua:</div>
+          <div class="col">{{expenses.values.Agua}}</div>
+          <div class="col col-20">Gas:</div>
+          <div class="col">{{expenses.values.Gas}}</div>
+        </div>
+        <div class="row">
+          <div class="col col-25">Internet:</div>
+          <div class="col">{{expenses.values.Internet}}</div>
+          <div class="col col-20">Luz:</div>
+          <div class="col">{{expenses.values.Luz}}</div>
+        </div>
       </ion-item>
     </ion-list>
   </ion-content>
