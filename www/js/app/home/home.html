@@ -2,7 +2,7 @@
   <ion-content>
     {{vm.saluda}}
     <ion-list ng-if="vm.list">
-      <ion-item ng-repeat="expenses in vm.list | orderBy: 'Fecha'">
+      <ion-item ng-click="vm.openFile(expenses.values.filepath)" ng-repeat="expenses in vm.list | orderBy: 'Fecha'">
         <div class="row">
           <div class="col col-center">{{expenses.values.Mes}}</div>
         </div>
@@ -17,6 +17,12 @@
           <div class="col">{{expenses.values.Internet}}</div>
           <div class="col col-20">Luz:</div>
           <div class="col">{{expenses.values.Luz}}</div>
+        </div>
+        <div class="row">
+          <div class="col col-25">Total:</div>
+          <div class="col">{{expenses.values.total}}</div>
+          <div class="col col-25">Ingreso:</div>
+          <div class="col">{{expenses.values.ingreso}}</div>
         </div>
       </ion-item>
     </ion-list>

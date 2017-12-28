@@ -5,7 +5,7 @@
     .module('app.document')
     .controller('DocumentController', DocumentController);
 
-  function DocumentController($scope) {
+  function DocumentController($scope, DocumentService) {
     var vm = this;
 
     $scope.$on('$ionicView.beforeEnter', function () {
