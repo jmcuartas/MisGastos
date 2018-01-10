@@ -55,10 +55,31 @@
     var storage = firebase.storage();
     var storageRef = storage.ref();
     var fileRef = storageRef.child(path);
+    var storeFile = ( typeof cordova !== "undefined" )? cordova.file.dataDirectory : "";
 
     fileRef.getDownloadURL().then(function (url) {
-      window.open(url)
+      //window.open(url)
+      downloadFile(url, storeFile + 'document.pdf');
     });
+  }
+
+  function downloadFile(url, targetPath) {
+    var fileTransfer = new FileTransfer();
+    var trustHosts = true;
+    var options = {};
+
+    fileTransfer.download(
+      url,
+      targetPath,
+      function (entry) {
+        cordova.plugins.FileOpener.openFile(entry.toURL(), onSucces, onError);
+      },
+      function (error) {
+        onError(error);
+      },
+      trustHosts,
+      options
+    );
   }
 
   function signInWithEmailAndPassword(cred) {
@@ -68,7 +89,7 @@
 
   function onSucces(result) {
     var message = result;
-    if (result.val()) {
+    if (result.val) {
       message = result.val();
     }
 
