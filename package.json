@@ -15,8 +15,6 @@
     "cordova-plugin-splashscreen",
     "cordova-plugin-statusbar",
     "ionic-plugin-keyboard",
-    "cordova-plugin-file",
-    "cordova-plugin-file-transfer",
     "cordova-plugin-fileopener"
   ],
   "cordovaPlatforms": [],
