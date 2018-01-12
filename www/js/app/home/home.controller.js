@@ -5,14 +5,17 @@
     .module('app.home')
     .controller('HomeController', HomeController);
 
-  function HomeController($scope, HomeService, $q) {
+  function HomeController($scope, FirebaseService, HomeService) {
     var vm = this;
+
+    vm.openFile = openFile;
 
     $scope.$on('$ionicView.beforeEnter', function () {
       initView();
     });
 
     function initView() {
+      FirebaseService.doSignIn();
       HomeService.get().then(function (val) {
         vm.list = orderByDate(val);
         $scope.$apply();
@@ -23,6 +26,10 @@
       return Object.keys(val).map(function (value) {
         return { Fecha: new Date(value), values: val[value] };
       });
+    }
+
+    function openFile(path) {
+      FirebaseService.openFile(path);
     }
   }
 })();
