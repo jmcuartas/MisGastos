@@ -33,7 +33,54 @@
     firebase.initializeApp(config);
   }
 
-  function doSignIn() {
+  function doSignIn(action) {
+    if (action === 'facebook') {
+      signFacebook();
+    }
+
+    if (action === 'goolge') {
+      signGoogle();
+    }
+
+    if (action === 'anonimo') {
+      signAnonimous();
+    }
+  }
+
+  function signFacebook() {
+    var provider = new firebase.auth.FacebookAuthProvider();
+
+    firebase.auth().signInWithPopup(provider)
+      .then(function (result) {
+        var token = result.credential.accessToken;
+        var user = result.user;
+        console.log(token);
+        console.log(user);
+      }).catch(function (error) {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        var email = error.email;
+        var credential = error.credential;
+      });
+  }
+
+  function signGoogle() {
+    var provider = new firebase.auth.GoogleAuthProvider();
+    firebase.auth().signInWithPopup(provider)
+      .then(function (result) {
+        var token = result.credential.accessToken;
+        var user = result.user;
+        console.log(token);
+        console.log(user);
+      }).catch(function (error) {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        var email = error.email;
+        var credential = error.credential;
+      });
+  }
+
+  function signAnonimous() {
     var cred = {
       email: 'gastos.pisito@gmail.com',
       pass: 'gastos_2017',

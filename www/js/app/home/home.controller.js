@@ -5,7 +5,7 @@
     .module('app.home')
     .controller('HomeController', HomeController);
 
-  function HomeController($scope, FirebaseService, HomeService) {
+  function HomeController($scope, FirebaseService, HomeService, $ionicLoading) {
     var vm = this;
 
     vm.openFile = openFile;
@@ -19,6 +19,7 @@
       HomeService.get().then(function (val) {
         vm.list = orderByDate(val);
         $scope.$apply();
+        $ionicLoading.hide();
       });
     }
 
