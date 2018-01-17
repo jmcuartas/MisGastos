@@ -2,19 +2,19 @@
   'use strict';
 
   angular
-    .module('app.document', [])
+    .module('app.home', [])
     .config(config);
 
   function config($stateProvider, $urlRouterProvider) {
     $stateProvider
 
-    .state('app.document', {
-      url: '/document',
+    .state('app.home', {
+      url: '/home',
       cache: false,
       views: {
         content: {
-          templateUrl: 'js/app/document/document.html',
-          controller: 'DocumentController',
+          templateUrl: 'js/app/features/home/home.html',
+          controller: 'HomeController',
           controllerAs: 'vm',
         },
       },

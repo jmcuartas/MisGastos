@@ -1,6 +1,5 @@
 <ion-view cache-view="false" view-title="Home">
   <ion-content>
-    {{vm.saluda}}
     <ion-list ng-if="vm.list">
       <ion-item ng-click="vm.openFile(expenses.values.filepath)" ng-repeat="expenses in vm.list | orderBy: 'Fecha'">
         <div class="row">

@@ -41,7 +41,8 @@
 
     firebase.auth().onAuthStateChanged(function (user) {
       if (!user) {
-        signInWithEmailAndPassword(cred);
+        //signInWithEmailAndPassword(cred);
+        signWithGoogle();
       }
     });
   }
@@ -85,6 +86,27 @@
   function signInWithEmailAndPassword(cred) {
     firebase.auth().signInWithEmailAndPassword(cred.email, cred.pass)
       .then(onSucces, onError);
+  }
+
+  function signWithGoogle() {
+    var provider = new firebase.auth.GoogleAuthProvider();
+
+    firebase.auth().signInWithPopup(provider)
+      .then(function (result) {
+        var token = result.credential.accessToken;
+        var user = result.user;
+
+        console.log(result);
+        console.log(token);
+        console.log(user);
+      })
+      .catch(function (error) {
+        var errorCode = error.code;
+      var errorMessage = error.message;
+
+      console.log(error.code);
+      console.log(error.message);
+      })
   }
 
   function onSucces(result) {
