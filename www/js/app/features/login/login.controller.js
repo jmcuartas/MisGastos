@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('app.login')
+    .module('app.login', [])
     .controller('LoginController', LoginController);
 
   function LoginController($scope, $state, $ionicLoading, FirebaseService) {
