@@ -3,25 +3,19 @@
     <ion-list ng-if="vm.list">
       <ion-item ng-click="vm.openFile(expenses.values.filepath)" ng-repeat="expenses in vm.list | orderBy: 'Fecha'">
         <div class="row">
-          <div class="col col-center">{{expenses.values.Mes}}</div>
+          <div class="col">
+            <span class="mesanyo">{{expenses.values.Mes}}</span>
+          </div>
         </div>
         <div class="row">
-          <div class="col col-20">Agua:</div>
-          <div class="col">{{expenses.values.Agua}}</div>
-          <div class="col col-20">Gas:</div>
-          <div class="col">{{expenses.values.Gas}}</div>
-        </div>
-        <div class="row">
-          <div class="col col-25">Internet:</div>
-          <div class="col">{{expenses.values.Internet}}</div>
-          <div class="col col-20">Luz:</div>
-          <div class="col">{{expenses.values.Luz}}</div>
-        </div>
-        <div class="row">
-          <div class="col col-25">Total:</div>
-          <div class="col">{{expenses.values.total}}</div>
-          <div class="col col-25">Ingreso:</div>
-          <div class="col">{{expenses.values.ingreso}}</div>
+          <div class="col">Gastos:</div>
+          <div class="col">
+            <span ng-class="vm.gastos > vm.ingresos ? 'color-red': ''">{{vm.gastos}} €</span>
+          </div>
+          <div class="col">Ingreso:</div>
+          <div class="col">
+            <span ng-class="vm.ingresos < vm.gastos ? 'color-green': ''">{{vm.ingresos}} €</span>
+          </div>
         </div>
       </ion-item>
     </ion-list>
