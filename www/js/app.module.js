@@ -4,6 +4,6 @@
     'app.core',
     'app.menu',
     'app.home',
-    'app.document',
+    'app.detalle',
   ]);
 })();

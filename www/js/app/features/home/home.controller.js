@@ -5,21 +5,22 @@
     .module('app.home')
     .controller('HomeController', HomeController);
 
-  function HomeController($scope, FirebaseService, HomeService) {
+  function HomeController($scope, FirebaseService, HomeService, $state, $localStorage) {
     var vm = this;
 
-    vm.openFile = openFile;
+    vm.goDetalles = goDetalles;
 
     $scope.$on('$ionicView.beforeEnter', function () {
       initView();
     });
 
     function initView() {
+      vm.gastos = 0;
+      vm.ingresos = 0;
+      vm.diferencia = 0;
       FirebaseService.doSignIn();
       HomeService.get().then(function (val) {
         vm.list = orderByDate(val);
-        vm.gastos = calcGastos(Object.values(val));
-        vm.ingresos = calcIngresos(Object.values(val));
         $scope.$apply();
       });
     }
@@ -30,30 +31,12 @@
       });
     }
 
-    function calcGastos(values) {
-      var total = 0;
-      Object.values(values).map(function (val) {
-        Object.values(val).map(function (gasto) {
-          if (gasto.hasOwnProperty('Coste')) {
-            total += gasto.Coste;
-          }
-        });
-      });
-
-      return total;
-    }
-
-    function calcIngresos(values) {
-      var total = 0;
-      Object.values(values[0].Ingresos).map(function (ing) { total += ing; });
-
-      return total;
-    }
-
-
-
-    function openFile(path) {
-      FirebaseService.openFile(path);
+    function goDetalles(data) {
+      if (angular.isUndefined($localStorage.gastos)) {
+        $localStorage.gastos = [];
+        $localStorage.gastos.push(data);
+      }
+      $state.go('app.detalle');
     }
   }
 })();

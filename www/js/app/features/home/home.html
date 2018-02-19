@@ -1,23 +1,36 @@
 <ion-view cache-view="false" view-title="Home">
   <ion-content>
     <ion-list ng-if="vm.list">
-      <ion-item ng-click="vm.openFile(expenses.values.filepath)" ng-repeat="expenses in vm.list | orderBy: 'Fecha'">
-        <div class="row">
-          <div class="col">
-            <span class="mesanyo">{{expenses.values.Mes}}</span>
+      <div class="card" ng-click="vm.goDetalles(expenses.values)" ng-repeat="expenses in vm.list | orderBy: '-Fecha'">
+        <div class="item item-divider">
+          <div class="row mesanyo">
+            <div class="col">
+              <span>Gastos de</span>
+              <br />
+              <span>{{expenses.values.Mes +" "+ expenses.values.Anyo}}</span>
+            </div>
+            <div class="col-25 mesanyo right">
+              <span ng-class="expenses.values.Total.Diferencia > 0 ? 'color-green': 'color-red'">{{expenses.values.Total.Diferencia}} €</span>
+            </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col">Gastos:</div>
-          <div class="col">
-            <span ng-class="vm.gastos > vm.ingresos ? 'color-red': ''">{{vm.gastos}} €</span>
-          </div>
-          <div class="col">Ingreso:</div>
-          <div class="col">
-            <span ng-class="vm.ingresos < vm.gastos ? 'color-green': ''">{{vm.ingresos}} €</span>
+        <div class="item item-divider">
+          <div class="row">
+            <div class="col">Gastos</div>
+            <div class="col-25">
+              <span>{{expenses.values.Total.Gastos}} €</span>
+            </div>
           </div>
         </div>
-      </ion-item>
+        <div class="item item-divider">
+          <div class="row">
+            <div class="col">Ingreso</div>
+            <div class="col-25">
+              <span>{{expenses.values.Total.Ingresos}} €</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </ion-list>
   </ion-content>
 

@@ -1,6 +1,6 @@
 .mesanyo {
-  font-size: 25px;
-  color: #2B3942;
+  font-size: 20px;
+  font-weight: bold
 }
 
 .color-green {
@@ -12,6 +12,13 @@
 }
 
 .col{
-  font-style: italic;
-  font-family: sans-serif;
+
+  font-family: Roboto;
+}
+
+.right {
+    position: absolute;
+    right: 0px;
+    width: 300px;
+    padding: 10px;
 }

@@ -2,10 +2,10 @@
   'use strict';
 
   angular
-    .module('app.document')
-    .factory('DocumentService', DocumentService);
+    .module('app.detalle')
+    .factory('detalleService', detalleService);
 
-  function DocumentService() {
+  function detalleService() {
 
       var service = {
         openFile: openFile,
