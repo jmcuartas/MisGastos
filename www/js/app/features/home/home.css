@@ -1,6 +1,5 @@
 .mesanyo {
   font-size: 20px;
-  font-weight: bold
 }
 
 .color-green {
@@ -12,13 +11,9 @@
 }
 
 .col{
-
   font-family: Roboto;
 }
 
-.right {
-    position: absolute;
-    right: 0px;
-    width: 300px;
+.right-price {
     padding: 10px;
 }

@@ -1,31 +1,35 @@
-<ion-view cache-view="false" view-title="Home">
+<ion-view cache-view="false" view-title="Gastos mensuales">
   <ion-content>
     <ion-list ng-if="vm.list">
-      <div class="card" ng-click="vm.goDetalles(expenses.values)" ng-repeat="expenses in vm.list | orderBy: '-Fecha'">
+      <div class="list card" ng-click="vm.goDetalles(expenses.values)" ng-repeat="expenses in vm.list | orderBy: '-Fecha'">
         <div class="item item-divider">
-          <div class="row mesanyo">
-            <div class="col">
+          <div class="row row-center center mesanyo">
+            <div class="col col-center center">
               <span>Gastos de</span>
               <br />
               <span>{{expenses.values.Mes +" "+ expenses.values.Anyo}}</span>
             </div>
-            <div class="col-25 mesanyo right">
+            <div class="col col-center center col-25">
               <span ng-class="expenses.values.Total.Diferencia > 0 ? 'color-green': 'color-red'">{{expenses.values.Total.Diferencia}} €</span>
             </div>
           </div>
         </div>
-        <div class="item item-divider">
-          <div class="row">
-            <div class="col">Gastos</div>
-            <div class="col-25">
+        <div class="item">
+          <div class="row row-center center">
+            <div class="col col-center center">
+              Gastos
+            </div>
+            <div class="col col-25">
               <span>{{expenses.values.Total.Gastos}} €</span>
             </div>
           </div>
         </div>
-        <div class="item item-divider">
-          <div class="row">
-            <div class="col">Ingreso</div>
-            <div class="col-25">
+        <div class="item">
+          <div class="row row-center center">
+            <div class="col col-center center">
+              Ingreso
+            </div>
+            <div class="col col-25">
               <span>{{expenses.values.Total.Ingresos}} €</span>
             </div>
           </div>

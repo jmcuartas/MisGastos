@@ -8,52 +8,51 @@
             <br />
             <span>{{vm.data.Mes +" "+ vm.data.Anyo}}</span>
           </div>
-          <div class="col-25 mesanyo right">
+          <div class="col col-center center col-25">
             <span ng-class="vm.data.Total.Diferencia > 0 ? 'color-green': 'color-red'">{{vm.data.Total.Gastos}} €</span>
           </div>
         </div>
       </div>
       <a ng-click="vm.verFactura(vm.data.Internet.filepath)" class="item item-icon-left">
-        <div class="row">
-          <div class="col">
+        <div class="row row-center center">
+          <div class="col col-center center">
             <i class="icon ion-wifi"></i>
             Internet
           </div>
-          <div class="col-25">
+          <div class="col col-25">
             <span>{{vm.data.Internet.Coste}} €</span>
-            <i class="icon ion-chevron-right"></i>
           </div>
         </div>
       </a>
       <a ng-click="vm.verFactura(vm.data.Agua.filepath)" class="item item-icon-left">
-        <div class="row">
-          <div class="col">
+        <div class="row row-center center">
+          <div class="col col-center center">
             <i class="icon ion-waterdrop"></i>
             Agua
           </div>
-          <div class="col-25">
+          <div class="col col-25">
             <span>{{vm.data.Agua.Coste}} €</span>
           </div>
         </div>
       </a>
       <a ng-click="vm.verFactura(vm.data.Luz.filepath)" class="item item-icon-left">
-        <div class="row">
-          <div class="col">
+        <div class="row row-center center">
+          <div class="col col-center center">
             <i class="icon ion-lightbulb"></i>
             Luz
           </div>
-          <div class="col-25">
+          <div class="col col-25">
             <span>{{vm.data.Luz.Coste}} €</span>
           </div>
         </div>
       </a>
       <a ng-click="vm.verFactura(vm.data.Gas.filepath)" class="item item-icon-left">
-        <div class="row">
-          <div class="col">
+        <div class="row row-center center">
+          <div class="col col-center center">
             <i class="icon ion-flame"></i>
             Gas
           </div>
-          <div class="col-25">
+          <div class="col col-25">
             <span>{{vm.data.Gas.Coste}} €</span>
           </div>
         </div>
