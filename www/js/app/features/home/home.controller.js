@@ -5,7 +5,7 @@
     .module('app.home')
     .controller('HomeController', HomeController);
 
-  function HomeController($scope, FirebaseService, HomeService, $state, $localStorage) {
+  function HomeController($scope, FirebaseService, $localStorage, HomeService, $state) {
     var vm = this;
 
     vm.goDetalles = goDetalles;
@@ -23,6 +23,14 @@
         vm.list = orderByDate(val);
         $scope.$apply();
       });
+
+      initStorage();
+    }
+
+    function initStorage() {
+      if (angular.isUndefined($localStorage.gastos)) {
+        $localStorage.gastos = [];
+      }
     }
 
     function orderByDate(val) {
@@ -32,11 +40,26 @@
     }
 
     function goDetalles(data) {
-      if (angular.isUndefined($localStorage.gastos)) {
-        $localStorage.gastos = [];
-        $localStorage.gastos.push(data);
-      }
+      createGasto(data);
       $state.go('app.detalle');
+    }
+
+    function createGasto(gasto) {
+      var storage = { id: 'gastos', data: JSON.stringify(gasto) };
+      if ($localStorage.gastos.length === 0) {
+        $localStorage.gastos.push(storage);
+      } else {
+        updateGasto(storage);
+      }
+    }
+
+    function updateGasto(data) {
+      $localStorage.gastos = $localStorage.gastos.map(function (gastoToUpdate) {
+        if (data.id === gastoToUpdate.id) {
+          return data;
+        }
+        return gastoToUpdate;
+      });
     }
   }
 })();

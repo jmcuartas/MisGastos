@@ -41,8 +41,7 @@
 
     firebase.auth().onAuthStateChanged(function (user) {
       if (!user) {
-        //signInWithEmailAndPassword(cred);
-        signWithGoogle();
+        signInWithEmailAndPassword(cred);
       }
     });
   }
@@ -56,15 +55,19 @@
     var storage = firebase.storage();
     var storageRef = storage.ref();
     var fileRef = storageRef.child(path);
-    var storeFile = ( typeof cordova !== "undefined" )? cordova.file.dataDirectory : "";
+    var storeFile = getStorage();
 
     fileRef.getDownloadURL().then(function (url) {
-      //window.open(url)
-      downloadFile(url, storeFile + 'document.pdf');
+      if (typeof(cordova) !== 'undefined') {
+        downloadFile(url, storeFile + 'document.pdf');
+      } else {
+        window.open(url)
+      }
     });
   }
 
   function downloadFile(url, targetPath) {
+    var mimeType = 'application/pdf';
     var fileTransfer = new FileTransfer();
     var trustHosts = true;
     var options = {};
@@ -73,7 +76,7 @@
       url,
       targetPath,
       function (entry) {
-        cordova.plugins.FileOpener.openFile(entry.toURL(), onSucces, onError);
+        cordova.plugins.fileOpener2.open(decodeURIComponent(entry.nativeURL), mimeType, { success :onSucces, error :onError });
       },
       function (error) {
         onError(error);
@@ -88,25 +91,12 @@
       .then(onSucces, onError);
   }
 
-  function signWithGoogle() {
-    var provider = new firebase.auth.GoogleAuthProvider();
+  function getStorage() {
+    if (window.device !== undefined) {
+      return window.device.platform === 'Android' ? cordova.file.externalCacheDirectory + "tmp/" : cordova.file.dataDirectory + "tmp/";
+    }
 
-    firebase.auth().signInWithPopup(provider)
-      .then(function (result) {
-        var token = result.credential.accessToken;
-        var user = result.user;
-
-        console.log(result);
-        console.log(token);
-        console.log(user);
-      })
-      .catch(function (error) {
-        var errorCode = error.code;
-      var errorMessage = error.message;
-
-      console.log(error.code);
-      console.log(error.message);
-      })
+    return '';
   }
 
   function onSucces(result) {
