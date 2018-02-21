@@ -12,6 +12,8 @@
       url: '/app',
       abstract: true,
       templateUrl: 'js/app/features/menu/menu.html',
+      controller: 'menuController',
+      controllerAs: 'vm',
     });
 
     $urlRouterProvider.otherwise('/app/home');
