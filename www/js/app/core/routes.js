@@ -9,12 +9,17 @@
     $stateProvider
 
     .state('app', {
-      url: '/app',
-      abstract: true,
-      templateUrl: 'js/app/features/menu/menu.html',
+      url: '/login',
+      cache: false,
+      views: {
+        content: {
+          templateUrl: 'js/app/login/login.html',
+          controller: 'LoginController',
+          controllerAs: 'vm',
+        },
+      },
     });
 
-    $urlRouterProvider.otherwise('/app/home');
-
+    //$urlRouterProvider.otherwise('/app/menu');
   }
 })();

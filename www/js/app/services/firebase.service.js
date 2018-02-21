@@ -85,7 +85,7 @@
       options
     );
   }
-
+  
   function signInWithEmailAndPassword(cred) {
     firebase.auth().signInWithEmailAndPassword(cred.email, cred.pass)
       .then(onSucces, onError);
@@ -98,7 +98,6 @@
 
     return '';
   }
-
   function onSucces(result) {
     var message = result;
     if (result.val) {
