@@ -1,5 +1,5 @@
 (function () {
-  'use stric';
+  'use strict';
 
   angular
     .module('app.detalle')
@@ -14,7 +14,6 @@
     });
 
     function initView() {
-      vm.saluda = 'Hola detalleos';
       var data = JSON.parse(getGastos('gastos').data);
       vm.data = data;
       console.log(vm.data);
@@ -28,7 +27,7 @@
 
     function verFactura(path) {
       if (path !== '') {
-        FirebaseService.openFile(path);        
+        FirebaseService.openFile(path);
       }
     }
   }

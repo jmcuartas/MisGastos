@@ -5,5 +5,6 @@
     'app.menu',
     'app.home',
     'app.detalle',
+    'app.ayuda',
   ]);
 })();

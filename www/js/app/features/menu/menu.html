@@ -15,18 +15,21 @@
             </div>
           </div>
         </ion-item>
-        <ion-item ui-sref="app.detalle" menu-close>
+        <ion-item ui-sref="app.ayuda" menu-close>
           <div class="row row-center center">
             <div class="col col-center center col-20">
-              <i class="icon ion-ios-telephone large"></i>
+              <i class="icon ion-information-circled large"></i>
             </div>
             <div class="col">
-              Detalles
+              Ayuda
             </div>
           </div>
         </ion-item>
       </ion-list>
     </ion-content>
+    <ion-footer-bar class="bar-dark">
+      <span class="title">{{vm.version}}</span>
+    </ion-footer-bar>
   </ion-side-menu>
 
   <ion-side-menu-content>
