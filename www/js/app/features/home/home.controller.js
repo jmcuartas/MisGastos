@@ -9,6 +9,9 @@
     var vm = this;
 
     vm.goDetalles = goDetalles;
+    vm.ingresosTotales = 0;
+    vm.gastosTotales = 0;
+    vm.diferenciaTotal = 0;
 
     $scope.$on('$ionicView.beforeEnter', function () {
       initView();
@@ -21,6 +24,9 @@
       FirebaseService.doSignIn();
       HomeService.get().then(function (val) {
         vm.list = orderByDate(val);
+        calcGastoT(vm.list);
+        calcIngresoT(vm.list);
+        vm.diferenciaTotal = (vm.ingresosTotales - vm.gastosTotales).toFixed(2);
         $scope.$apply();
       });
 
@@ -59,6 +65,18 @@
           return data;
         }
         return gastoToUpdate;
+      });
+    }
+
+    function calcGastoT(data) {
+      data.forEach(function (elem) {
+        vm.gastosTotales += elem.values.Total.Gastos;
+      });
+    }
+
+    function calcIngresoT(data) {
+      data.forEach(function (elem) {
+        vm.ingresosTotales += elem.values.Total.Ingresos;
       });
     }
   }
