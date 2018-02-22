@@ -5,7 +5,10 @@
     .module('app.core')
     .factory('FirebaseService', FirebaseService);
 
-  function FirebaseService() {
+  var loading = undefined;
+  function FirebaseService($ionicLoading) {
+    loading = $ionicLoading;
+
     initService();
 
     var service = {
@@ -72,11 +75,15 @@
     var trustHosts = true;
     var options = {};
 
+    loading.show({
+      template: '<ion-spinner icon="bubbles"></ion-spinner>'+'<p>Descargando ...</p>'
+    });
     fileTransfer.download(
       url,
       targetPath,
       function (entry) {
         cordova.plugins.fileOpener2.open(decodeURIComponent(entry.nativeURL), mimeType, { success :onSucces, error :onError });
+        loading.hide();
       },
       function (error) {
         onError(error);
