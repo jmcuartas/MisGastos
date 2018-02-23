@@ -1,4 +1,4 @@
-<ion-view cache-view="false" view-title="Detalles">
+<ion-view cache-view="false" view-title="Facturas">
   <ion-content>
     <div class="list card">
       <div class="item item-divider">
@@ -13,50 +13,70 @@
           </div>
         </div>
       </div>
-      <a ng-click="vm.verFactura(vm.data.Internet.filepath)" class="item item-icon-left">
+      <a ng-click="vm.verFactura(vm.data.Internet.filepath)" class="item">
         <div class="row row-center center">
           <div class="col col-center center">
-            <i class="icon ion-wifi"></i>
-            Internet
+            <div class="item-icon-left">
+              <i class="icon ion-wifi"></i>
+              Internet
+            </div>
           </div>
-          <div class="col col-25">
-            <span>{{vm.data.Internet.Coste}} €</span>
+          <div class="col col-25 col-right right">
+            <span class="">{{vm.data.Internet.Coste}} €</span>
+          </div>
+          <div class="col col-10" ng-if="vm.data.Internet.Coste > 0">
+            <i class="icon ion-chevron-right grande"></i>
           </div>
         </div>
       </a>
-      <a ng-click="vm.verFactura(vm.data.Agua.filepath)" class="item item-icon-left">
+      <a ng-click="vm.verFactura(vm.data.Agua.filepath)" class="item">
         <div class="row row-center center">
           <div class="col col-center center">
-            <i class="icon ion-waterdrop"></i>
-            Agua
+            <div class="item-icon-left">
+              <i class="icon ion-waterdrop"></i>
+              Agua
+            </div>
           </div>
-          <div class="col col-25">
+          <div class="col col-25 col-right right">
             <span>{{vm.data.Agua.Coste}} €</span>
           </div>
+          <div class="col col-10" ng-if="vm.data.Agua.Coste > 0">
+            <i class="icon ion-chevron-right grande"></i>
+          </div>
         </div>
       </a>
-      <a ng-click="vm.verFactura(vm.data.Luz.filepath)" class="item item-icon-left">
+      <a ng-click="vm.verFactura(vm.data.Luz.filepath)" class="item">
         <div class="row row-center center">
           <div class="col col-center center">
-            <i class="icon ion-lightbulb"></i>
-            Luz
+            <div class="item-icon-left">
+              <i class="icon ion-lightbulb"></i>
+              Luz
+            </div>
           </div>
-          <div class="col col-25">
+          <div class="col col-25 col-right right">
             <span>{{vm.data.Luz.Coste}} €</span>
           </div>
+          <div class="col col-10" ng-if="vm.data.Luz.Coste > 0">
+            <i class="icon ion-chevron-right grande"></i>
+          </div>
         </div>
       </a>
-      <a ng-click="vm.verFactura(vm.data.Gas.filepath)" class="item item-icon-left">
+      <a ng-click="vm.verFactura(vm.data.Gas.filepath)" class="item">
         <div class="row row-center center">
           <div class="col col-center center">
-            <i class="icon ion-flame"></i>
-            Gas
+            <div class="item-icon-left">
+              <i class="icon ion-flame"></i>
+              Gas
+            </div>
           </div>
-          <div class="col col-25">
+          <div class="col col-25 col-right right">
             <span>{{vm.data.Gas.Coste}} €</span>
+          </div>
+          <div class="col col-10" ng-if="vm.data.Gas.Coste > 0">
+            <i class="icon ion-chevron-right grande"></i>
           </div>
         </div>
       </a>
     </div>
-  </ion-content>  
+  </ion-content>
 </ion-view>

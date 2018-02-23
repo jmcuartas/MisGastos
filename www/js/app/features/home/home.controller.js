@@ -5,13 +5,14 @@
     .module('app.home')
     .controller('HomeController', HomeController);
 
-  function HomeController($scope, FirebaseService, $localStorage, HomeService, $state) {
+  function HomeController($scope, FirebaseService, $localStorage, HomeService, $state, $ionicLoading) {
     var vm = this;
 
     vm.goDetalles = goDetalles;
     vm.ingresosTotales = 0;
     vm.gastosTotales = 0;
     vm.diferenciaTotal = 0;
+    vm.loading = $ionicLoading;
 
     $scope.$on('$ionicView.beforeEnter', function () {
       initView();
@@ -22,12 +23,18 @@
       vm.ingresos = 0;
       vm.diferencia = 0;
       FirebaseService.doSignIn();
+      $ionicLoading.show({
+        template: '<ion-spinner icon="bubbles"></ion-spinner>'+'<p>Cargando ...</p>'
+      });
       HomeService.get().then(function (val) {
         vm.list = orderByDate(val);
         calcGastoT(vm.list);
         calcIngresoT(vm.list);
         vm.diferenciaTotal = (vm.ingresosTotales - vm.gastosTotales).toFixed(2);
         $scope.$apply();
+      })
+      .finally(function () {
+        $ionicLoading.hide();
       });
 
       initStorage();
