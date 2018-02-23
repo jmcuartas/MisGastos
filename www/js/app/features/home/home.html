@@ -1,0 +1,77 @@
+<ion-view cache-view="false" view-title="Gastos mensuales">
+  <ion-content>
+    <div class="list card">
+      <div class="item item-divider">
+        <div class="row row-center center mesanyo">
+          <div class="col col-center center">
+            <span>Resumen</span>
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="row row-center center">
+          <div class="col col-center center">
+            <span>Ingresos</span>
+          </div>
+          <div class="col col-center center col-25">
+            <span>{{vm.ingresosTotales}} €</span>
+          </div>
+        </div>
+        <div class="row row-center center">
+          <div class="col col-center center">
+            <span>Gastos</span>
+          </div>
+          <div class="col col-center center col-25">
+            <span>{{vm.gastosTotales}} €</span>
+          </div>
+        </div>
+        <div class="row row-center center">
+          <div class="col col-center center">
+            <span>Balance General</span>
+          </div>
+          <div class="col col-center center col-25">
+            <span ng-class="vm.diferenciaTotal > 0 ? 'color-green': 'color-red'">{{vm.diferenciaTotal}} €</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <ion-list ng-if="vm.list">
+      <div class="list card" ng-click="vm.goDetalles(expenses.values)" ng-repeat="expenses in vm.list | orderBy: '-Fecha'">
+        <div class="item item-divider">
+          <div class="row row-center center mesanyo">
+            <div class="col col-center center">
+              <span>Gastos de</span>
+              <br />
+              <span>{{expenses.values.Mes +" "+ expenses.values.Anyo}}</span>
+            </div>
+            <div class="col col-center center col-25">
+              <span ng-class="expenses.values.Total.Diferencia > 0 ? 'color-green': 'color-red'">{{expenses.values.Total.Diferencia}} €</span>
+              <i class="icon ion-chevron-right"></i>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="row row-center center">
+            <div class="col col-center center">
+              Gastos
+            </div>
+            <div class="col col-25">
+              <span>{{expenses.values.Total.Gastos}} €</span>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="row row-center center">
+            <div class="col col-center center">
+              Ingreso
+            </div>
+            <div class="col col-25">
+              <span>{{expenses.values.Total.Ingresos}} €</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ion-list>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,18 @@
+.my-menu {
+  background-color: #3f4041;
+  color: #ffffff;
+}
+
+.my-menu .list {
+  background-color: transparent;
+}
+
+.my-menu .item, .my-menu .item-content, .my-menu .item-complex{
+  background-color: transparent;
+  color: #FFFFFF;
+  border-color: #C0C0C0;
+}
+
+.large {
+  font-size: 30px;
+}
