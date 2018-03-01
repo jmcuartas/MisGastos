@@ -30,7 +30,7 @@
         vm.list = orderByDate(val);
         calcGastoT(vm.list);
         calcIngresoT(vm.list);
-        vm.diferenciaTotal = (vm.ingresosTotales - vm.gastosTotales).toFixed(2);
+        vm.diferenciaTotal = vm.ingresosTotales - vm.gastosTotales;
         $scope.$apply();
       })
       .finally(function () {
