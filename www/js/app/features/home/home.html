@@ -14,7 +14,7 @@
             <span>Ingresos</span>
           </div>
           <div class="col col-center center col-25">
-            <span>{{vm.ingresosTotales}} €</span>
+            <span>{{vm.ingresosTotales | number:2}} €</span>
           </div>
         </div>
         <div class="row row-center center">
@@ -22,7 +22,7 @@
             <span>Gastos</span>
           </div>
           <div class="col col-center center col-25">
-            <span>{{vm.gastosTotales}} €</span>
+            <span>{{vm.gastosTotales | number:2}} €</span>
           </div>
         </div>
         <div class="row row-center center">
@@ -30,7 +30,7 @@
             <span>Balance General</span>
           </div>
           <div class="col col-center center col-25">
-            <span ng-class="vm.diferenciaTotal > 0 ? 'color-green': 'color-red'">{{vm.diferenciaTotal}} €</span>
+            <span ng-class="vm.diferenciaTotal > 0 ? 'color-green': 'color-red'">{{vm.diferenciaTotal | number:2}} €</span>
           </div>
         </div>
       </div>
@@ -46,7 +46,7 @@
               <span>{{expenses.values.Mes +" "+ expenses.values.Anyo}}</span>
             </div>
             <div class="col col-center center col-25">
-              <span ng-class="expenses.values.Total.Diferencia > 0 ? 'color-green': 'color-red'">{{expenses.values.Total.Diferencia}} €</span>
+              <span ng-class="expenses.values.Total.Diferencia > 0 ? 'color-green': 'color-red'">{{expenses.values.Total.Diferencia | number:2}} €</span>
               <i class="icon ion-chevron-right"></i>
             </div>
           </div>
@@ -57,7 +57,7 @@
               Gastos
             </div>
             <div class="col col-25">
-              <span>{{expenses.values.Total.Gastos}} €</span>
+              <span>{{expenses.values.Total.Gastos |number:2}} €</span>
             </div>
           </div>
         </div>
@@ -67,7 +67,7 @@
               Ingreso
             </div>
             <div class="col col-25">
-              <span>{{expenses.values.Total.Ingresos}} €</span>
+              <span>{{expenses.values.Total.Ingresos | number:2}} €</span>
             </div>
           </div>
         </div>

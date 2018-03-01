@@ -9,7 +9,7 @@
             <span>{{vm.data.Mes +" "+ vm.data.Anyo}}</span>
           </div>
           <div class="col col-center center col-25">
-            <span ng-class="vm.data.Total.Diferencia > 0 ? 'color-green': 'color-red'">{{vm.data.Total.Gastos}} €</span>
+            <span ng-class="vm.data.Total.Diferencia > 0 ? 'color-green': 'color-red'">{{vm.data.Total.Gastos | number:2}} €</span>
           </div>
         </div>
       </div>
@@ -22,7 +22,7 @@
             </div>
           </div>
           <div class="col col-25 col-right right">
-            <span class="">{{vm.data.Internet.Coste}} €</span>
+            <span class="">{{vm.data.Internet.Coste| number:2}} €</span>
           </div>
           <div class="col col-10" ng-if="vm.data.Internet.Coste > 0">
             <i class="icon ion-chevron-right grande"></i>
@@ -38,7 +38,7 @@
             </div>
           </div>
           <div class="col col-25 col-right right">
-            <span>{{vm.data.Agua.Coste}} €</span>
+            <span>{{vm.data.Agua.Coste | number:2}} €</span>
           </div>
           <div class="col col-10" ng-if="vm.data.Agua.Coste > 0">
             <i class="icon ion-chevron-right grande"></i>
@@ -54,7 +54,7 @@
             </div>
           </div>
           <div class="col col-25 col-right right">
-            <span>{{vm.data.Luz.Coste}} €</span>
+            <span>{{vm.data.Luz.Coste | number:2}} €</span>
           </div>
           <div class="col col-10" ng-if="vm.data.Luz.Coste > 0">
             <i class="icon ion-chevron-right grande"></i>
@@ -70,7 +70,7 @@
             </div>
           </div>
           <div class="col col-25 col-right right">
-            <span>{{vm.data.Gas.Coste}} €</span>
+            <span>{{vm.data.Gas.Coste | number:2}} €</span>
           </div>
           <div class="col col-10" ng-if="vm.data.Gas.Coste > 0">
             <i class="icon ion-chevron-right grande"></i>
