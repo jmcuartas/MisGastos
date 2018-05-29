@@ -1,0 +1,10 @@
+
+{
+    "ios": {
+        "debug": {
+            "developmentTeam": "65UC4RPJD3",
+            "packageType": "development",
+            "codeSignIdentity": "iPhone Developer"
+        }
+    }
+}

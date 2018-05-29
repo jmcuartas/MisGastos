@@ -24,8 +24,9 @@ tmp/
 temp/
 hooks/
 platforms/
-www/lib/
-www/css/
+www/
+src/lib/
+src/css/
 plugins/
 plugins/android.json
 plugins/ios.json
