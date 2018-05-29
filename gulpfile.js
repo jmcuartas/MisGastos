@@ -1,27 +1,22 @@
-var gulp = require('gulp');
-var sass = require('gulp-sass');
-var cleanCss = require('gulp-clean-css');
-var rename = require('gulp-rename');
+(function () {
+  'use strict';
 
-var paths = {
-  sass: ['./scss/**/*.scss']
-};
+  var args = require('yargs').argv;
+  var config = require('./gulp.config')();
+  var gulp = require('gulp');
+  var plugins = require('gulp-load-plugins')({ lazy: true });
+  var gulpsync = require('gulp-sync')(gulp);
 
-gulp.task('default', ['sass']);
+  function getTask(task) {
+    return require('./gulp-task/' + task)(gulp, plugins, config, args);
+  }
 
-gulp.task('sass', function(done) {
-  gulp.src('./scss/ionic.app.scss')
-    .pipe(sass())
-    .on('error', sass.logError)
-    .pipe(gulp.dest('./www/css/'))
-    .pipe(cleanCss({
-      keepSpecialComments: 0
-    }))
-    .pipe(rename({ extname: '.min.css' }))
-    .pipe(gulp.dest('./www/css/'))
-    .on('end', done);
-});
-
-gulp.task('watch', ['sass'], function() {
-  gulp.watch(paths.sass, ['sass']);
-});
+  gulp
+  .task('default', ['help'])
+  .task('help', plugins.taskListing)
+  .task('build',
+    gulpsync.sync(['clean', 'copy', 'build-styles']))
+  .task('clean',        getTask('clean'))
+  .task('copy',         getTask('copy'))
+  .task('build-styles', getTask('build-styles'));
+})();
